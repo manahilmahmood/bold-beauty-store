@@ -3,6 +3,7 @@ import {bestSale} from '../utli/objectData/bestsale'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../store/slice/counterSlice';
+import { addToWishlist } from '../store/slice/counterSlice';
 
 function BestSale() {
    const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function BestSale() {
       <div key={item.id} className='w-[23%] bg-white p-4 relative'>
 
         {/* Wishlist Icon */}
-        <button onClick={() => dispatch(addProduct(item))}>
+        <button onClick={() => dispatch(addToWishlist(item))}>
         <i className="fa-regular fa-heart absolute top-2 right-2 bg-white p-2 rounded-full shadow-sm text-slate-700 hover:text-pink-500 cursor-pointer"></i></button>
 
         {/* Sale Badge */}

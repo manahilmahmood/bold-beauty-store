@@ -5,17 +5,24 @@ import { navbar } from '../utli/tailwind/style';
 import NavMenu from './NavMenu';
 import { useSelector } from 'react-redux';
 import CartSidebar from "../components/CartSidebar";
+import WishlistCart from '../components/WishlistCart';
 
 
 
 
 function Navbar() {
  const { value, product } = useSelector((state) => state.counter);
+  const { wishlist } = useSelector((state) => state.counter);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [show, setShow] = useState(false);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
+  };
+
+    const toggleWishlist = () => {
+    setIsWishlistOpen(!isWishlistOpen); // ✅ Fixed typo
   };
   
 
@@ -74,9 +81,10 @@ function Navbar() {
 
         {/* Wishlist */}
         <button 
+        onClick={toggleWishlist}
         className="flex items-center space-x-1">
           <i className="fa-solid fa-heart text-black"></i>
-          <p>WishList</p>
+          <p>WishList ({wishlist?.length || 0})</p>
         </button>
 
         {/* Cart */}
@@ -95,6 +103,9 @@ function Navbar() {
       </div>
     </div>
 
+      
+      {/* ✅ Wishlist Sidebar */}
+      <WishlistCart isOpen={isWishlistOpen} onClose={toggleWishlist} />
     {/* Cart Sidebar Component */}
       <CartSidebar isOpen={isCartOpen} toggleCart={toggleCart} />
 

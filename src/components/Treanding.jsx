@@ -3,6 +3,8 @@ import {trendingProduct} from '../utli/objectData/trendingdata'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../store/slice/counterSlice';
+import { addToWishlist } from '../store/slice/counterSlice';
+
 
 
 
@@ -19,7 +21,8 @@ function Trending() {
       <div key={item.id} className='w-[23%]  bg-white relative'>
 
         {/* Wishlist Icon */}
-        <button>
+        <button
+        onClick={() => dispatch(addToWishlist(item))}>
         <i className="fa-regular fa-heart absolute mt-7 top-2 right-2 bg-white p-2 rounded-full shadow-sm text-slate-700 hover:text-pink-500 cursor-pointer"></i> </button>
 
         {/* Sale Badge */}

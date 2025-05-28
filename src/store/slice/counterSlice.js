@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: 0,
-  product: []  // ✅ Match with 'product' used in CartSidebar
+  product: [],
+  wishlist: []  // ✅ Match with 'product' used in CartSidebar
 };
 
 const counterSlice = createSlice({
@@ -52,7 +53,18 @@ const counterSlice = createSlice({
         product.quantity -= 1;
         state.value -= 1;
       }
-    }
+    },
+
+    addToWishlist: (state, action) => {
+  const exists = state.wishlist.find(item => item.id === action.payload.id);
+  if (!exists) {
+    state.wishlist.push(action.payload);
+  }
+},
+
+removeFromWishlist: (state, action) => {
+  state.wishlist = state.wishlist.filter(item => item.id !== action.payload.id);
+},
 
   }
 });
@@ -63,7 +75,10 @@ export const {
   addProduct,
   removeProduct,
   incrementQuantity,
-  decrementQuantity
+  decrementQuantity,
+  addToWishlist,
+  removeFromWishlist
+  
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
