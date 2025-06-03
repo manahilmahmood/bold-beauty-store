@@ -10,6 +10,7 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 import Makeup from "../pages/Makeup";
 import Skincare from "../pages/Skincare";
+import Haircare from "../pages/Haircare";
 // import NavMenu from "../components/NavMenu"; // Uncomment and fix if you have this component
 
 const MainStack = () => {
@@ -26,7 +27,7 @@ const MainStack = () => {
       <Route path="/Signup" element={<Signup />} />
       <Route path="/Makeup" element={<Makeup />} />
       <Route path="/skincare" element={<Skincare />} />
-
+      <Route path="/Haircare" element={<Haircare />} />
 
 
 
